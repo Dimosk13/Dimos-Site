@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="faq.css">
+    <link rel="icon" href="./img/dimosicon.png" type="image/png">
+    <link rel="shortcut icon" href="./img/dimosicon.png" sizes="32x32" type="image/png"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600&display=swap" rel="stylesheet">
+    <title>FAQ | Dimos Konotgiannis</title>
+<script>
+
+     // Mobile Sidebar
+     function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'flex'
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none'
+    }
+
+    //  FAQ
+    function toggleAnswer(faqItem) {
+    var answer = faqItem.querySelector('.answer');
+    answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+    }
+
+</script>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html">
+            <img src="./img/dimoslogo.png" alt="logo">
+        </a>
+    </div>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About me</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li> <!-- New FAQ link -->
+        </ul>
+        <ul>
+            <li class="hideOnMobile"><a href="index.html">Home</a></li>
+            <li class="hideOnMobile"><a href="aboutme.html">About me</a></li>
+            <li class="hideOnMobile"><a href="portfolio.html">Portfolio</a></li>
+            <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
+            <li class="hideOnMobile"><a href="faq.html">FAQ</a></li> <!-- New FAQ link -->
+            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 -960 960 960" width="36"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+        </ul>
+    </nav>
+    <section class="faq-section">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item" onclick="toggleAnswer(this)">
+            <div class="question">
+                Q: What is your website about?
+            </div>
+            <div class="answer">
+                A: This website showcases my portfolio, provides information about me, and allows you to contact me.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleAnswer(this)">
+            <div class="question">
+                Q: How can I contact you?
+            </div>
+            <div class="answer">
+                A: You can use the contact form on the Contact page to send me a message.
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <p>&copy; <span id="currentYear"></span> Dimos Kontogiannis. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+    </script>
+</body>
+</html>
