@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="aboutme.css">
+    <link rel="icon" href="./img/icon-white.png" type="image/png">
+    <link rel="shortcut icon" href="./img/shortcut-icon.png" sizes="32x32" type="image/png">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600&display=swap" rel="stylesheet">
+    <title>About Me | Dimos Konotgiannis</title>
+<script>
+
+    // Mobile Sidebar
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'flex'
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none'
+    }
+
+     //Footer fade in effect
+
+     document.addEventListener('scroll', function () {
+        var footer = document.getElementById('footer');
+        var threshold = window.innerHeight * 0.2;
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - threshold) {
+            footer.style.opacity = '1';
+        } else {
+            footer.style.opacity = '0';
+        }
+    });
+
+</script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="./img/logo white.png" alt="logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutme.html">About me</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <ul>
+                <li class="hideOnMobile"><a href="index.html">Home</a></li>
+                <li class="hideOnMobile"><a href="aboutme.html">About me</a></li>
+                <li class="hideOnMobile"><a href="portfolio.html">Portfolio</a></li>
+                <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
+                <li class="hideOnMobile"><a href="faq.html">FAQ</a></li>
+                <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 -960 960 960" width="36"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="bgcolor1 about-section">
+        <div class="container">
+            <div class="split">
+                <div class="text-container">
+                    <h2>About Me</h2>
+                    <p>Welcome to my creative space! I'm Dimos Kontogiannis, a dedicated graphic designer and seasoned Photoshop artist with 7 years of experience. Specializing in visually striking movie and sports posters, I bring a unique blend of creativity and technical precision to every project. With a passion for storytelling, I craft designs that resonate and leave a lasting impact. Join me in this visual exploration where art meets passion, and let's collaborate to produce extraordinary designs that stand out.</p>
+                    <p class="name">Dimos Kontogiannis</p>
+                    <p class="textfooter">Designer | Photoshop Artist | Movie &amp; Sports Poster Specialist</p>
+                </div>
+                <div class="imagebg">
+                    <img src="./img/mewithpc.jpg" alt="Your Profile Image" width="50%">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="social-section">
+        <div class="container">
+            <div class="social-logos">
+                <a href="https://www.instagram.com/dk13.art/" target="_blank"><img src="./img/instagram.png" alt="Instagram" width="40px"></a>
+                <a href="https://www.youtube.com/channel/UCdUu9osm7tr8kOJlkccTFug" target="_blank"><img src="./img/youtube.png" alt="YouTube" width="50px"></a>
+                <a href="https://www.behance.net/dimoskontogi" target="_blank"><img src="./img/behance.png" alt="Behance" width="45px"></a>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <p>&copy; <span id="currentYear"></span> Dimos Kontogiannis. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+    </script>
+</body>
+</html>

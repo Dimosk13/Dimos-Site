@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="icon" href="./img/icon-white.png" type="image/png">
+    <link rel="shortcut icon" href="./img/shortcut-icon.png" sizes="32x32" type="image/png"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600&display=swap" rel="stylesheet">
+    <title>Contact | Dimos Konotgiannis</title>
+<script>
+
+    // Mobile Sidebar
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'flex'
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none'
+    }
+
+    function updateCharCount() {
+        var maxLength = 100;
+        var currentLength = document.getElementById('message').value.length;
+        var charCount = maxLength - currentLength;
+
+        document.getElementById('charCount').innerText = charCount + '/100';
+    }
+
+    function submitForm() {
+        var email = document.getElementById('email').value;
+        var name = document.getElementById('name').value;
+        var message = document.getElementById('message').value;
+
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email === '' || name === '' || message === '') {
+            alert('Please fill all the boxes');
+            return;
+        }
+
+        if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+        }
+
+        if (message.length > 100) {
+            alert('Your message must contain up to 100 characters');
+            return;
+        }
+
+        simulateSuccessfulSubmission();
+        alert('Your message was sent successfully!');
+        document.getElementById('contactForm').reset();
+    }
+
+        function simulateSuccessfulSubmission() {
+            console.log('Form submitted successfully');
+    }
+</script>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html">
+            <img src="./img/logo white.png" alt="logo">
+        </a>
+    </div>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About me</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <ul>
+            <li class="hideOnMobile"><a href="index.html">Home</a></li>
+            <li class="hideOnMobile"><a href="aboutme.html">About me</a></li>
+            <li class="hideOnMobile"><a href="portfolio.html">Portfolio</a></li>
+            <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
+            <li class="hideOnMobile"><a href="faq.html">FAQ</a></li>
+            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 -960 960 960" width="36"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+        </ul>
+    </nav>
+    <form id="contactForm">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required placeholder="Enter your e-mail here">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name here">
+
+        <label for="message">Message:</label>
+        <div style="position: relative;">
+            <textarea id="message" name="message" maxlength="200" required oninput="updateCharCount()" placeholder="Enter your text here"></textarea>
+            <div id="charCount"> 0/100 </div>
+        </div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="successMessage" class="success-message" style="display: none;">
+        Το μήνυμά σας στάλθηκε με επιτυχία.
+    </div>
+    <footer id="footer">
+        <p>&copy; <span id="currentYear"></span> Dimos Kontogiannis. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+    </script>
+</body>
+</html>

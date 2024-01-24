@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7rem;
+    background-color: black;
+    overflow-x: hidden;
+    background-image: url(img/skyhouse.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(4px);
+}    
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.logo {
+    width: 3.5rem;
+    padding-left: 1rem;
+    padding-top: .8rem;
+    position: absolute;
+    z-index: 999;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    padding: .5em 0;
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: auto;
+}
+
+nav li {
+    height: 50px;
+}
+
+nav a {
+    height: 100%;
+    padding:  0 2.5em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #D3A78C;
+    transition: color 0.3s ease;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 100000;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.3) ;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .sidebar {
+        background-color: rgba(41, 118, 219, 0.2);
+        backdrop-filter: blur(10px);
+    }
+}
+
+.sidebar a {
+    color: white;
+    width: 100%;
+    padding: 0;
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+svg {
+    fill: white;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 800px) {
+    .hideOnMobile {
+        display: none;
+    }
+    .menu-button {
+        display: block;
+    }
+
+    .menu-button a {
+        padding: 1em;
+    }
+}
+
+.faq-section {
+    max-width: 600px;
+    width: min(90%, 70.5rem);
+    margin: 0 auto;
+    height: 100vh;
+    padding-top: 40vh;
+    
+}
+
+.faq-section h1 {
+    padding-bottom: 30px;
+    color: #fff;
+    text-align: center;
+}
+
+.faq-item {
+    box-shadow: 0 10px 15px  rgba(0, 0, 0, 0.7) ;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #2059A4;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.faq-item:hover {
+    background-color: #f5f5f5;
+    color: #2059A4;
+}
+
+.question {
+    font-weight: bold;
+}
+
+.answer {
+    display: none;
+    margin-top: 10px;
+}
+
+.social-section {
+    background-color: #000000; 
+    color: white; 
+    padding: 3rem 0; 
+    padding-bottom: 5rem;
+    text-align: center;
+}
+
+.social-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-logos img {
+    margin: 0 10px;
+    width: 30px;
+}
+
+@media(max-width: 800px) {
+    .social-section {
+        padding: 1rem 0;
+        padding-bottom: 4rem;
+        
+    }
+
+    .social-logos img {
+        width: 30px;
+        margin: 0 10px; 
+    }
+}
+
+footer {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: opacity 0.9s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 14px;
+    z-index: 100;
+
+}
