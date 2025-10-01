@@ -1,397 +1,81 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="portfolio.css">
-    <link rel="icon" href="./img/icon-white.png" type="image/png">
-    <link rel="shortcut icon" href="./img/shortcut-icon.png" sizes="32x32" type="image/png"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
     <title>Portfolio | Dimos Konotgiannis</title>
-<script>
 
-     // Mobile Sidebar
-     function showSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'flex'
-    }
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
 
-    function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'none'
-    }
+    <!-- Favicon -->
+    <link rel="icon" href="./img/icon-white.png" type="image/png">
+    <link rel="shortcut icon" href="./img/shortcut-icon.png" sizes="32x32" type="image/png">
 
-    ////////////////////////////////////////
-
-    function toggleLike(event) {
-        event.stopPropagation();
-        var likeContainer = event.currentTarget;
-        likeContainer.classList.toggle('active');
-
-        var likeImage = likeContainer.querySelector('.like-image');
-
-        if (likeContainer.classList.contains('active')) {
-            likeImage.src = './likebutton/heart1.png';
-        } else {
-            likeImage.src = './likebutton/heart2.png';
-        } 
-    }
-
-
-
-    document.addEventListener('scroll', function () {
-        var footer = document.getElementById('footer');
-        var threshold = window.innerHeight * 0.2;
-
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - threshold) {
-            footer.style.opacity = '1';
-        } else {
-            footer.style.opacity = '0';
-        }
-    });
-
-    var currentImageIndex = 0;
-    var images = [
-        './portfolio/image1.jpg',
-        './portfolio/image2.jpg',
-        './portfolio/image3.jpg',
-        './portfolio/image4.jpg',
-        './portfolio/image5.jpg',
-        './portfolio/image6.jpg',
-        './portfolio/image7.jpg',
-        './portfolio/image8.jpg',
-        './portfolio/image9.jpg',
-        './portfolio/image10.jpg',
-        './portfolio/image11.jpg',
-        './portfolio/image12.jpg',
-        './portfolio/image13.jpg',
-        './portfolio/image14.jpg',
-        './portfolio/image15.jpg',
-        './portfolio/image16.jpg',
-        './portfolio/image17.jpg',
-        './portfolio/image18.jpg',
-        './portfolio/image19.jpg',
-        './portfolio/image20.jpg',
-        './portfolio/image21.jpg',
-        './portfolio/image22.jpg',
-        './portfolio/image23.jpg',
-        './portfolio/image24.jpg',
-    ];
-
-    function openLightbox(imageSrc) {
-        var lightbox = document.getElementById('lightbox');
-        var lightboxImage = document.getElementById('lightboxImage');
-
-        currentImageIndex = images.indexOf(imageSrc);
-
-        lightboxImage.src = imageSrc;
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Disable scrolling
-    }
-
-    function closeLightbox() {
-        var lightbox = document.getElementById('lightbox');
-
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Enable scrolling
-    }
-
-    function navigateImage(direction) {
-        currentImageIndex += direction;
-
-        if (currentImageIndex < 0) {
-            currentImageIndex = images.length - 1;
-        } else if (currentImageIndex >= images.length) {
-            currentImageIndex = 0;
-        }
-
-        var lightboxImage = document.getElementById('lightboxImage');
-        var nextImageSrc = images[currentImageIndex];
-        lightboxImage.src = nextImageSrc;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('arrowLeft').addEventListener('click', function (event) {
-            event.stopPropagation();
-            navigateImage(-1);
-        });
-
-        document.getElementById('arrowRight').addEventListener('click', function (event) {
-            event.stopPropagation();
-            navigateImage(1);
-        });
-    });
-
-</script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
-    <div class="logo">
-        <a href="index.html">
-            <img src="./img/logo white.png" alt="logo">
-        </a>
+
+<!-- Navigation (unchanged) -->
+<div class="logo">
+    <a href="index.html">
+        <img src="./img/logo white.png" alt="logo">
+    </a>
+</div>
+<nav>
+    <ul class="sidebar">
+        <li onclick="hideSidebar()"><a href="#">✕</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutme.html">About me</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <ul>
+        <li class="hideOnMobile"><a href="index.html">Home</a></li>
+        <li class="hideOnMobile"><a href="aboutme.html">About me</a></li>
+        <li class="hideOnMobile"><a href="portfolio.html">Portfolio</a></li>
+        <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
+        <li class="hideOnMobile"><a href="faq.html">FAQ</a></li>
+        <li class="menu-button" onclick="showSidebar()"><a href="#">☰</a></li>
+    </ul>
+</nav>
+
+<!-- Gallery -->
+<main>
+    <section id="gallery"></section>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <div id="lightboxImageContainer">
+            <div id="mediaContainer"></div> <!-- media will go here -->
+            <div id="arrowLeft">&#9664;</div>
+            <div id="arrowRight">&#9654;</div>
+        </div>
     </div>
-    <nav>
-        <ul class="sidebar">
-            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutme.html">About me</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-        </ul>
-        <ul>
-            <li class="hideOnMobile"><a href="index.html">Home</a></li>
-            <li class="hideOnMobile"><a href="aboutme.html">About me</a></li>
-            <li class="hideOnMobile"><a href="portfolio.html">Portfolio</a></li>
-            <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
-            <li class="hideOnMobile"><a href="faq.html">FAQ</a></li>
-            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 -960 960 960" width="36"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="gallery">
-            <div class="artwork" onclick="openLightbox('./portfolio/image1.jpg')">
-                <img src="./portfolio/image1.jpg" alt="Artwork 1">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-    
-            <div class="artwork" onclick="openLightbox('./portfolio/image2.jpg')">
-                <img src="./portfolio/image2.jpg" alt="Artwork 2">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
 
-            <div class="artwork" onclick="openLightbox('./portfolio/image3.jpg')">
-                <img src="./portfolio/image3.jpg" alt="Artwork 3">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
+</main>
 
-            <div class="artwork" onclick="openLightbox('./portfolio/image4.jpg')">
-                <img src="./portfolio/image4.jpg" alt="Artwork 4">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
+<!-- Social Links -->
+<section class="social-section">
+    <div class="social-logos">
+        <a href="https://www.instagram.com/dk13.art/" target="_blank"><img src="./img/instagram.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/channel/UCdUu9osm7tr8kOJlkccTFug" target="_blank"><img src="./img/youtube.png" alt="YouTube"></a>
+        <a href="https://www.behance.net/dimoskontogi" target="_blank"><img src="./img/behance.png" alt="Behance"></a>
+        <a href="https://www.europosters.gr/artist/dk13//?affil=DK1310" target="_blank"><img src="./img/europosters logo.png" alt="Europosters"></a>
+    </div>
+</section>
 
-            <div class="artwork" onclick="openLightbox('./portfolio/image5.jpg')">
-                <img src="./portfolio/image5.jpg" alt="Artwork 5">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
+<!-- Footer -->
+<footer id="footer">
+    <p>&copy; <span id="currentYear"></span> Dimos Kontogiannis. All rights reserved.</p>
+</footer>
 
-            <div class="artwork" onclick="openLightbox('./portfolio/image6.jpg')">
-                <img src="./portfolio/image6.jpg" alt="Artwork 6">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
+<!-- JS -->
+<script src="portfolio.js"></script>
+<script>
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+</script>
 
-            <div class="artwork" onclick="openLightbox('./portfolio/image7.jpg')">
-                <img src="./portfolio/image7.jpg" alt="Artwork 7">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image8.jpg')">
-                <img src="./portfolio/image8.jpg" alt="Artwork 8">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image9.jpg')">
-                <img src="./portfolio/image9.jpg" alt="Artwork 9">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image10.jpg')">
-                <img src="./portfolio/image10.jpg" alt="Artwork 10">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image11.jpg')">
-                <img src="./portfolio/image11.jpg" alt="Artwork 11">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image12.jpg')">
-                <img src="./portfolio/image12.jpg" alt="Artwork 12">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image13.jpg')">
-                <img src="./portfolio/image13.jpg" alt="Artwork 13">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image14.jpg')">
-                <img src="./portfolio/image14.jpg" alt="Artwork 14">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image15.jpg')">
-                <img src="./portfolio/image15.jpg" alt="Artwork 15">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image16.jpg')">
-                <img src="./portfolio/image16.jpg" alt="Artwork 16">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image17.jpg')">
-                <img src="./portfolio/image17.jpg" alt="Artwork 17">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-          <div class="artwork" onclick="openLightbox('./portfolio/image18.jpg')">
-                <img src="./portfolio/image18.jpg" alt="Artwork 18">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image19.jpg')">
-                <img src="./portfolio/image19.jpg" alt="Artwork 19">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image20.jpg')">
-                <img src="./portfolio/image20.jpg" alt="Artwork 20">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image21.jpg')">
-                <img src="./portfolio/image21.jpg" alt="Artwork 21">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image22.jpg')">
-                <img src="./portfolio/image22.jpg" alt="Artwork 22">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image23.jpg')">
-                <img src="./portfolio/image23.jpg" alt="Artwork 23">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-            <div class="artwork" onclick="openLightbox('./portfolio/image24.jpg')">
-                <img src="./portfolio/image24.jpg" alt="Artwork 24">
-                <div class="like-container" onclick="toggleLike(event)">
-                    <div class="like-button">
-                        <img class="like-image" src="./likebutton/heart2.png" alt="Like Button">
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <div id="lightbox" onclick="closeLightbox()">
-            <div id="lightboxImageContainer">
-                <img id="lightboxImage" alt="Selected Artwork">
-                <div id="arrowLeft">&#9664;</div>
-                <div id="arrowRight">&#9654;</div>
-            </div>
-        </div>
-    </main>
-    <section class="social-section">
-        <div class="container">
-            <div class="social-logos">
-                <a href="https://www.instagram.com/dk13.art/" target="_blank"><img src="./img/instagram.png" alt="Instagram" width="40px"></a>
-                <a href="https://www.youtube.com/channel/UCdUu9osm7tr8kOJlkccTFug" target="_blank"><img src="./img/youtube.png" alt="YouTube" width="50px"></a>
-                <a href="https://www.behance.net/dimoskontogi" target="_blank"><img src="./img/behance.png" alt="Behance" width="45px"></a>
-                <a href="https://www.europosters.gr/artist/dk13//?affil=DK1310" target="_blank"><img src="./img/europosters logo.png" alt="Behance" width="40px"></a>
-            </div>
-        </div>
-    </section>
-    <footer id="footer">
-        <p>&copy; <span id="currentYear"></span> Dimos Kontogiannis. All rights reserved.</p>
-    </footer>
-    <script>
-        document.getElementById('currentYear').innerText = new Date().getFullYear();
-    </script>
 </body>
 </html>
